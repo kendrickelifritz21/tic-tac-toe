@@ -18,11 +18,17 @@ export default function Player(props: PlayerProps) {
     setPlayerName(event.target.value);
   }
 
+  function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      handleEditClick();
+    }
+  }
+
   return (
     <li>
       <span className="player">
         {!isEditing && <span className="player-name">{playerName}</span>}
-        {isEditing && <input type="text" required value={playerName} onChange={handleChange} />}
+        {isEditing && <input type="text" required value={playerName} onChange={handleChange} onKeyUp={handleKeyPress} />}
         <span className="player-symbol">{props.symbol}</span>
       </span>
       <button onClick={handleEditClick}>{!isEditing ? 'Edit' : 'Save'}</button>
