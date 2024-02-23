@@ -3,7 +3,8 @@ import './Player.css'
 
 interface PlayerProps {
   name: string,
-  symbol: string
+  symbol: string,
+  isActive: boolean
 }
 
 export default function Player(props: PlayerProps) {
@@ -25,7 +26,7 @@ export default function Player(props: PlayerProps) {
   }
 
   return (
-    <li>
+    <li className={props.isActive ? "active" : undefined}>
       <span className="player">
         {!isEditing && <span className="player-name">{playerName}</span>}
         {isEditing && <input type="text" required value={playerName} onChange={handleChange} onKeyUp={handleKeyPress} />}
