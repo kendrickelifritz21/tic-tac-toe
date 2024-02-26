@@ -1,4 +1,5 @@
 import { Turn } from '../GameBoard/GameBoard'
+import './Log.css'
 
 interface LogProps {
   turns: Turn[]

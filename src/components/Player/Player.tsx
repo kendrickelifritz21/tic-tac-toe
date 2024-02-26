@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import './Player.css'
+import { PlayerSymbol } from '../GameBoard/GameBoard';
 
 interface PlayerProps {
   name: string,
-  symbol: string,
-  isActive: boolean
+  symbol: PlayerSymbol,
+  isActive: boolean,
+  onChangeName: (symbol: PlayerSymbol, newName: string) => void
 }
 
 export default function Player(props: PlayerProps) {
@@ -13,6 +15,9 @@ export default function Player(props: PlayerProps) {
 
   function handleEditClick() {
     setIsEditing(editing => !editing);
+    if (isEditing) {
+      props.onChangeName(props.symbol, playerName);
+    }
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
